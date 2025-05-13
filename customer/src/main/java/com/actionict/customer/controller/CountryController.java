@@ -1,13 +1,14 @@
 package com.actionict.customer.controller;
 
-import com.actionict.customer.model.Country;
+import com.actionict.customer.entity.Country;
 import com.actionict.customer.service.CountryService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/countries")
@@ -20,4 +21,21 @@ public class CountryController {
     public List<Country> getAllCountries() {
         return countryService.findAll();
     }
+
+    @GetMapping("/{id}")
+    public Optional<Country> getCountryById(@PathVariable("id") Integer id) { return countryService.findById(id); }
+
+    @PostMapping
+    public ResponseEntity<Integer> insertCountry(@RequestBody Country country) {
+        Integer id = countryService.save(country).getId();
+        return new ResponseEntity<>(id, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update/{id}")
+    public Optional<Country> updateCountry(@RequestBody Country newCountry, @PathVariable Integer id) {
+        return countryService.update(newCountry, id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteCountry(@PathVariable Integer id) { countryService.delete(id); }
 }

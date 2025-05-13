@@ -1,11 +1,13 @@
-package com.actionict.customer.model;
+package com.actionict.customer.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Entity
 @Table(name = "country")
 public class Country {
