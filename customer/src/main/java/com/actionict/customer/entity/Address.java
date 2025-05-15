@@ -13,7 +13,7 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "address_id")
-    private Integer id;
+    private Short id;
 
     @Column(name = "address")
     private String address;
@@ -24,10 +24,10 @@ public class Address {
     @Column(name = "district")
     private String district;
 
-    @JoinColumn(name = "city.city_id")
+    @JoinColumn(name = "city_id")
     @ManyToOne(fetch = FetchType.LAZY)
     //@Column(name = "city_id")
-    private Integer cityId;
+    private City city;
 
     @Column(name = "postal_code")
     private String postalCode;

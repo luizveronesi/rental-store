@@ -13,11 +13,11 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
-    private Integer id;
+    private Short id;
 
     //@JoinColumn(name = "store.store_id")
     //@ManyToOne(fetch = FetchType.LAZY)
-    private Integer storeId;
+    private Short storeId;
 
     @Column(name = "first_name")
     private String firstName;
@@ -28,10 +28,10 @@ public class Customer {
     @Column(name = "email")
     private String email;
 
-    @JoinColumn(name = "address.address_id")
+    @JoinColumn(name = "address_id")
     @ManyToOne(fetch = FetchType.LAZY)
     //@Column(name = "address_id")
-    private Integer addressId;
+    private Address address;
 
     @Column(name = "active")
     private boolean active;

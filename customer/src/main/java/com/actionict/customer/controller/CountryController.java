@@ -23,19 +23,19 @@ public class CountryController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Country> getCountryById(@PathVariable("id") Integer id) { return countryService.findById(id); }
+    public Optional<Country> getCountryById(@PathVariable("id") Short id) { return countryService.findById(id); }
 
-    @PostMapping
-    public ResponseEntity<Integer> insertCountry(@RequestBody Country country) {
-        Integer id = countryService.save(country).getId();
+    @PostMapping("/insert")
+    public ResponseEntity<Short> insertCountry(@RequestBody Country country) {
+        Short id = countryService.save(country).getId();
         return new ResponseEntity<>(id, HttpStatus.CREATED);
     }
 
     @PutMapping("/update/{id}")
-    public Optional<Country> updateCountry(@RequestBody Country newCountry, @PathVariable Integer id) {
+    public Optional<Country> updateCountry(@RequestBody Country newCountry, @PathVariable Short id) {
         return countryService.update(newCountry, id);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteCountry(@PathVariable Integer id) { countryService.delete(id); }
+    public void deleteCountry(@PathVariable Short id) { countryService.delete(id); }
 }

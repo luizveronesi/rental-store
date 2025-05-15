@@ -1,6 +1,6 @@
 package com.actionict.customer;
 
-import com.actionict.customer.model.Country;
+import com.actionict.customer.entity.Country;
 import com.actionict.customer.repository.CountryRepository;
 import com.actionict.customer.service.CountryService;
 import org.junit.jupiter.api.BeforeEach;

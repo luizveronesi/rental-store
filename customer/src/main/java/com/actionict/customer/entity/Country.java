@@ -5,9 +5,7 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@RequiredArgsConstructor
+@Data
 @Entity
 @Table(name = "country")
 public class Country {
@@ -15,7 +13,7 @@ public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "country_id")
-    private Integer id;
+    private Short id;
 
     @Column(name = "name")
     private String name;

@@ -13,15 +13,15 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "city_id")
-    private Integer id;
+    private Short id;
 
     @Column(name = "name")
     private String name;
 
-    @JoinColumn(name = "country.country_id")
+    @JoinColumn(name = "country_id")
     @ManyToOne(fetch = FetchType.LAZY)
     //@Column(name = "country_id")
-    private Integer countryId;
+    private Country country;
 
     @Column(name = "last_update")
     private LocalDateTime lastUpdate;
