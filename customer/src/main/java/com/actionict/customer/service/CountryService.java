@@ -3,11 +3,12 @@ package com.actionict.customer.service;
 import com.actionict.customer.entity.Country;
 import com.actionict.customer.repository.CountryRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,24 +16,25 @@ public class CountryService {
 
     private final CountryRepository countryRepository;
 
-    public List<Country> findAll() {
-        return countryRepository.findAll();
+    public List<Country> findAll() { return countryRepository.findAll(); }
+
+    public Page<Country> findAllPage(final Pageable pageable) {
+        Page<Country> page = countryRepository.findAll(pageable);
+        return page;
     }
 
-    public Optional<Country> findById(Short id) { return countryRepository.findById(Integer.valueOf(id)); }
+    public Country findById(Integer id) throws Exception { return countryRepository.findById(id).orElseThrow(() -> new Exception("Country with id "+id+" not found")); }
 
     public Country save(Country country) { return countryRepository.save(country); }
 
-    public Optional<Country> update(Country newCountry, Short id) {
-        return countryRepository.findById(Integer.valueOf(id)).map(country -> {
+    public void update(Country newCountry, Integer id) {
+        countryRepository.findById(id).map(country -> {
             country.setName(newCountry.getName());
             country.setLastUpdate(LocalDateTime.now());
             return countryRepository.save(country);
         });
     }
 
-    public void delete(Short id) { countryRepository.deleteById(Integer.valueOf(id)); }
+    public void delete(Integer id) { countryRepository.deleteById(id); }
 
-    /*@Bean
-    public CountryRepository countryRepository() { return new CountryRepository; }*/
 }

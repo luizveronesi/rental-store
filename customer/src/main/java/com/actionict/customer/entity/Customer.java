@@ -13,11 +13,11 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
-    private Short id;
+    private Integer id;
 
     //@JoinColumn(name = "store.store_id")
     //@ManyToOne(fetch = FetchType.LAZY)
-    private Short storeId;
+    private Integer storeId;
 
     @Column(name = "first_name")
     private String firstName;
