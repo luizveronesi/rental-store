@@ -1,11 +1,14 @@
 package com.actionict.customer.controller;
 
-import com.actionict.customer.model.Country;
+import com.actionict.customer.entity.Country;
 import com.actionict.customer.service.CountryService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,4 +23,24 @@ public class CountryController {
     public List<Country> getAllCountries() {
         return countryService.findAll();
     }
+
+    @GetMapping("/page")
+    public Page getAllCountriesPaged(@PageableDefault(size = 2) Pageable pageable) { return countryService.findAllPage(pageable); }
+
+    @GetMapping("/{id}")
+    public Country getCountryById(@PathVariable("id") Integer id) throws Exception { return countryService.findById(id); }
+
+    @PostMapping("/insert")
+    public ResponseEntity<Integer> insertCountry(@RequestBody Country country) {
+        Integer id = countryService.save(country).getId();
+        return new ResponseEntity<Integer>(id, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update/{id}")
+    public void updateCountry(@RequestBody Country newCountry, @PathVariable Integer id) {
+        countryService.update(newCountry, id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteCountry(@PathVariable Integer id) { countryService.delete(id); }
 }
