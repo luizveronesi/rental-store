@@ -1,7 +1,7 @@
 package com.actionict.customer.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
