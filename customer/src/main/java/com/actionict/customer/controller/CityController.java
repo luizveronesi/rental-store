@@ -29,9 +29,7 @@ public class CityController {
     }
 
     @PutMapping("/update/{id}")
-    public void updateCity(@RequestBody City newCity, @PathVariable Integer id) {
-        cityService.update(newCity, id);
-    }
+    public void updateCity(@RequestBody City newCity, @PathVariable Integer id) { cityService.update(newCity, id); }
 
     @DeleteMapping("/delete/{id}")
     public void deleteCity(@PathVariable Integer id) { cityService.delete(id); }
