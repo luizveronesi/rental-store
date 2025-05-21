@@ -3,6 +3,9 @@ package com.actionict.customer.controller;
 import com.actionict.customer.entity.Customer;
 import com.actionict.customer.service.CustomerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +21,9 @@ public class CustomerController {
 
     @GetMapping
     public List<Customer> getAllCustomers() { return customerService.findAll(); }
+
+    @GetMapping("/page")
+    public Page getAllCustomersPage(@PageableDefault(sort = "id") Pageable pageable) { return customerService.findAllPage(pageable); }
 
     @GetMapping("/{id}")
     public Customer getCustomerById(@PathVariable("id") Integer id) throws Exception { return customerService.findById(id); }

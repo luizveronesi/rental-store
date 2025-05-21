@@ -29,7 +29,7 @@ public class Customer {
     private String email;
 
     @JoinColumn(name = "address_id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Address address;
 
     @Column(name = "active")

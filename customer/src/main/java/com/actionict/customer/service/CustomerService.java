@@ -3,6 +3,8 @@ package com.actionict.customer.service;
 import com.actionict.customer.entity.Customer;
 import com.actionict.customer.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,10 +18,13 @@ public class CustomerService {
 
     public List<Customer> findAll() { return customerRepository.findAll();}
 
+    public Page<Customer> findAllPage(final Pageable pageable) { return customerRepository.findAll(pageable); }
+
     public Customer findById(Integer id) throws Exception { return customerRepository.findById(id).orElseThrow(() -> new Exception("Customer with id "+id+" not found")); }
 
     public Customer save(Customer customer) {
         customer.setCreateDate(LocalDateTime.now());
+        customer.setLastUpdate(LocalDateTime.now());
         return customerRepository.save(customer);
     }
 
