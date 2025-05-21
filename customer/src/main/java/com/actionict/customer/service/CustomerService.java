@@ -16,7 +16,11 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
 
-    public List<Customer> findAll() { return customerRepository.findAll();}
+    public List<Customer> findAll(String firstName, String lastName) {
+        if (firstName != null && firstName.length()>1) return customerRepository.findByFirstName(firstName);
+        else if (lastName != null && lastName.length()>1) return customerRepository.findByLastName(lastName);
+        else return customerRepository.findAll();
+    }
 
     public Page<Customer> findAllPage(final Pageable pageable) { return customerRepository.findAll(pageable); }
 
@@ -36,7 +40,6 @@ public class CustomerService {
             customer.setEmail(newCustomer.getEmail());
             customer.setAddress(newCustomer.getAddress());
             customer.setActive(newCustomer.isActive());
-            //customer.setCreateDate(newCustomer.getCreateDate());
             customer.setLastUpdate(LocalDateTime.now());
             return  customerRepository.save(customer);
         });
