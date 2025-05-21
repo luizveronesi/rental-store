@@ -26,7 +26,6 @@ public class Address {
 
     @JoinColumn(name = "city_id")
     @ManyToOne(fetch = FetchType.LAZY)
-    //@Column(name = "city_id")
     private City city;
 
     @Column(name = "postal_code")

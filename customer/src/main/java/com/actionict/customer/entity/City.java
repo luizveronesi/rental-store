@@ -20,7 +20,6 @@ public class City {
 
     @JoinColumn(name = "country_id")
     @ManyToOne(fetch = FetchType.LAZY)
-    //@Column(name = "country_id")
     private Country country;
 
     @Column(name = "last_update")

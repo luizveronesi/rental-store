@@ -30,7 +30,6 @@ public class Customer {
 
     @JoinColumn(name = "address_id")
     @ManyToOne(fetch = FetchType.LAZY)
-    //@Column(name = "address_id")
     private Address address;
 
     @Column(name = "active")
