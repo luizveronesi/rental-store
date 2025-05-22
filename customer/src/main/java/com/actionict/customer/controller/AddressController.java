@@ -22,15 +22,15 @@ public class AddressController {
     @GetMapping("/{id}")
     public Address getAddressById(@PathVariable("id") Integer id) throws Exception { return addressService.findById(id); }
 
-    @PostMapping("/insert")
+    @PostMapping()
     public ResponseEntity<Integer> insertAddress(@RequestBody Address address) {
         Integer id = addressService.save(address).getId();
         return new ResponseEntity<Integer>(id, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public void updateAddress(@RequestBody Address newAddress, @PathVariable Integer id) { addressService.update(newAddress, id); }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteAddress(@PathVariable Integer id) { addressService.delete(id); }
 }

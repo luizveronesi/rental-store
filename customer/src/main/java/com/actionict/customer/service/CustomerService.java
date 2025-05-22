@@ -8,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -16,10 +15,9 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
 
-    public List<Customer> findAll(String firstName, String lastName) {
-        if (firstName != null && firstName.length()>1) return customerRepository.findByFirstName(firstName);
-        else if (lastName != null && lastName.length()>1) return customerRepository.findByLastName(lastName);
-        else return customerRepository.findAll();
+    public Page<Customer> findAll(String name, Pageable pageable) {
+        if (name != null && name.length()>1) return customerRepository.findByName(name, pageable);
+        else return findAllPage(pageable);
     }
 
     public Page<Customer> findAllPage(final Pageable pageable) { return customerRepository.findAll(pageable); }

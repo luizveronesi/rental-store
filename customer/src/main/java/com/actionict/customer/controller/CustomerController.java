@@ -10,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/customers")
 @RequiredArgsConstructor
@@ -19,13 +17,15 @@ public class CustomerController {
 
     private final CustomerService customerService;
 
-    @RequestMapping("/search")
+    /*@RequestMapping("/search")
     public List<Customer> search(@RequestParam(value = "firstName", required = false) String firstName, @RequestParam(value = "lastName", required = false) String lastName) {
         return customerService.findAll(firstName, lastName);
-    }
+    }*/
+    @GetMapping("/name/{name}")
+    public Page<Customer> search(@PathVariable("name") String name, Pageable pageable) { return customerService.findAll(name, pageable); }
 
     @GetMapping
-    public List<Customer> getAllCustomers() { return customerService.findAll("", ""); }
+    public Page<Customer> getAllCustomers() { return customerService.findAll("", Pageable.unpaged()); }
 
     @GetMapping("/page")
     public Page getAllCustomersPage(@PageableDefault(sort = "id") Pageable pageable) { return customerService.findAllPage(pageable); }
@@ -33,15 +33,15 @@ public class CustomerController {
     @GetMapping("/{id}")
     public Customer getCustomerById(@PathVariable("id") Integer id) throws Exception { return customerService.findById(id); }
 
-    @PostMapping("/insert")
+    @PostMapping()
     public ResponseEntity<Integer> insertCustomer(@RequestBody Customer customer) {
         Integer id = customerService.save(customer).getId();
         return new ResponseEntity<Integer>(id, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public void updateCustomer(@RequestBody Customer newCustomer, @PathVariable Integer id) { customerService.update(newCustomer, id); }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteCustomer(@PathVariable Integer id) { customerService.delete(id); }
 }

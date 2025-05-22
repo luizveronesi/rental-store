@@ -30,17 +30,17 @@ public class CountryController {
     @GetMapping("/{id}")
     public Country getCountryById(@PathVariable("id") Integer id) throws Exception { return countryService.findById(id); }
 
-    @PostMapping("/insert")
+    @PostMapping()
     public ResponseEntity<Integer> insertCountry(@RequestBody Country country) {
         Integer id = countryService.save(country).getId();
         return new ResponseEntity<Integer>(id, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public void updateCountry(@RequestBody Country newCountry, @PathVariable Integer id) {
         countryService.update(newCountry, id);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteCountry(@PathVariable Integer id) { countryService.delete(id); }
 }
