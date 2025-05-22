@@ -9,6 +9,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import static com.actionict.customer.model.Customer.FIRST_NAME;
+import static com.actionict.customer.model.Customer.LAST_NAME;
+
 @RestController
 @RequestMapping("/customers")
 public class CustomerController extends EntityController<Customer> {
@@ -18,35 +21,20 @@ public class CustomerController extends EntityController<Customer> {
     }
 
 
-    private static final String LAST_NAME = "lastName";
-    private static final String FIRST_NAME = "firstName";
     @GetMapping("/search")
     public ResponseEntity<Page<Customer>> searchCustomers(
-            @RequestParam(defaultValue = LAST_NAME) String searchParam,
             @RequestParam String searchInput,
             @RequestParam(defaultValue = "0") int page) {
 
-        if (searchParam == null || searchInput == null || searchInput.length() < 2) {
+        if (searchInput == null || searchInput.length() < 2) {
             return ResponseEntity
                     .badRequest()
                     .body(Page.empty()); // oppure puoi restituire un messaggio personalizzato
         }
 
-        Pageable pageable = PageRequest.of(page, 2, Sort.by(LAST_NAME, FIRST_NAME).ascending());
-//        Page<Customer> results = ((CustomerService)entityService).searchByName(searchParam, searchInput, pageable);
-//        return ResponseEntity.ok(results);
-
-        return switch (searchParam) {
-            case LAST_NAME  -> ResponseEntity.ok(
-                    ((CustomerService)entityService).searchByLastName(searchInput, pageable)
-            );
-            case FIRST_NAME -> ResponseEntity.ok(
-                    ((CustomerService)entityService).searchByFirstName(searchInput, pageable)
-            );
-            default -> ResponseEntity
-                    .badRequest()
-                    .body(Page.empty());
-        };
+        return ResponseEntity.ok(
+                    ((CustomerService)entityService).searchByName(searchInput, page)
+                );
     }
 
 

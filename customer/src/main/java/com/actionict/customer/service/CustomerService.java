@@ -5,8 +5,13 @@ import com.actionict.customer.model.Customer;
 import com.actionict.customer.repository.CityRepository;
 import com.actionict.customer.repository.CustomerRepository;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import static com.actionict.customer.model.Customer.FIRST_NAME;
+import static com.actionict.customer.model.Customer.LAST_NAME;
 
 @Service
 public class CustomerService extends AbstractService<Customer> {
@@ -14,10 +19,8 @@ public class CustomerService extends AbstractService<Customer> {
         super(entityRepository);
     }
 
-    public Page<Customer> searchByFirstName(String searchInput, Pageable pageable) {
-        return ((CustomerRepository)super.entityRepository).searchByFirstName(searchInput,pageable);
-    }
-    public Page<Customer> searchByLastName(String searchInput, Pageable pageable) {
-        return ((CustomerRepository)super.entityRepository).searchByLastName(searchInput,pageable);
+    public Page<Customer> searchByName(String searchInput, int page) {
+        Pageable pageable = PageRequest.of(page, 2, Sort.by(LAST_NAME, FIRST_NAME).ascending());
+        return ((CustomerRepository)super.entityRepository).searchByName(searchInput,pageable);
     }
 }

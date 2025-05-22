@@ -15,8 +15,6 @@ public class Customer extends BaseEntityWithCreationTimestamp {
 
     public static final String LAST_NAME = "lastName";
     public static final String FIRST_NAME = "firstName";
-    public static final String LAST_NAME_LOWER = LAST_NAME.toLowerCase();
-    public static final String FIRST_NAME_LOWER = FIRST_NAME.toLowerCase();
 
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)

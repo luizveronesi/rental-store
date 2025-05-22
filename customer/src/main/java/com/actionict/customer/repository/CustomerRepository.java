@@ -15,14 +15,12 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     @Query("""
         SELECT c FROM Customer c\s
         WHERE LENGTH(:searchInput) >= 2 AND\s
+              (
               LOWER(c.firstName) LIKE LOWER(CONCAT(:searchInput, '%'))
-        """)
-    Page<Customer> searchByFirstName(@Param("searchInput") String searchInput, Pageable pageable);
-
-    @Query("""
-        SELECT c FROM Customer c\s
-        WHERE LENGTH(:searchInput) >= 2 AND\s
+              \sOR\s
               LOWER(c.lastName) LIKE LOWER(CONCAT(:searchInput, '%'))
+              )
         """)
-    Page<Customer> searchByLastName(@Param("searchInput") String searchInput, Pageable pageable);
+//    ORDER BY c.lastName, c.firstName ??
+    Page<Customer> searchByName(@Param("searchInput") String searchInput, Pageable pageable);
 }
