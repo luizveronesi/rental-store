@@ -1,23 +1,25 @@
 package com.actionict.customer.controller;
 
 import com.actionict.customer.model.Country;
+import com.actionict.customer.service.AbstractService;
 import com.actionict.customer.service.CountryService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/countries")
-@RequiredArgsConstructor
-public class CountryController {
+public class CountryController extends EntityController<Country> {
 
-    private final CountryService countryService;
+    public CountryController(CountryService service) {
+        super(service);
+    }
 
-    @GetMapping
-    public List<Country> getAllCountries() {
-        return countryService.findAll();
+    // IN CASO DOVESSI FARE OVERRIDE??
+    // Trova uno
+    @Override
+    @GetMapping("/{id:\\d+}")
+    public ResponseEntity<Country> getEntityById(@PathVariable int id) {
+        System.out.println("============= Override done successfully! =============");
+        return super.getEntityById(id);
     }
 }

@@ -2,7 +2,7 @@ package com.actionict.customer;
 
 import com.actionict.customer.model.Country;
 import com.actionict.customer.repository.CountryRepository;
-import com.actionict.customer.service.CountryService;
+import com.actionict.customer.service.AbstractService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -22,7 +22,7 @@ class CountryServiceTest {
     private CountryRepository countryRepository;
 
     @InjectMocks
-    private CountryService countryService;
+    private AbstractService countryService;
 
     @BeforeEach
     void setUp() {
