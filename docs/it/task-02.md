@@ -25,7 +25,7 @@ Dovrai:
 
 - Crea un nuovo progetto Spring Boot con la dipendenza **Spring Cloud Config Server**.
 - Configura il server per leggere le configurazioni da una directory `config-repo` locale o da un repository Git.
-- Esporre il Config Server su una porta dedicata (es. `8888`).
+- Esponi il Config Server su una porta dedicata (es. `8888`).
 - Definisci i file `application.yml` per server e client.
 
 ---
@@ -41,9 +41,8 @@ Dovrai:
 ### 3️⃣ Creare Spring Cloud Gateway
 
 - Crea un progetto Spring Boot con la dipendenza **Spring Cloud Gateway**.
-- Esporre il Config Server su una porta dedicata (es. `9090`).
+- Esponi il Cloud Gateway su una porta dedicata (es. `9090`).
 - Configura il routing per inoltrare le richieste verso il **Customer Module** e altri futuri servizi.
-- Opzionalmente implementa un semplice predicato di route e filtro dimostrativo.
 
 ---
 
@@ -60,7 +59,7 @@ Dovrai:
 
 - Crea un `Dockerfile` per ogni servizio.
 - Assicurati che i servizi comunichino tra loro tramite i nomi dei container usando Docker network.
-- Esporre le porte necessarie verso la macchina host.
+- Esponi le porte necessarie verso la macchina host.
 
 ---
 

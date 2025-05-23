@@ -43,7 +43,6 @@ You will:
 - Create a Spring Boot project with the **Spring Cloud Gateway** dependency.
 - Configure it to run on a dedicated port (e.g., `9090`).
 - Configure routing to forward requests to the **Customer Module** and other future services.
-- Optionally implement a basic route predicate and filter for demonstration.
 
 ---
 
