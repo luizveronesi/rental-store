@@ -16,9 +16,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
         SELECT c FROM Customer c\s
         WHERE LENGTH(:searchInput) >= 2 AND\s
               (
-              LOWER(c.firstName) LIKE LOWER(CONCAT(:searchInput, '%'))
+              LOWER(c.firstName) LIKE LOWER(CONCAT('%', :searchInput, '%'))
               \sOR\s
-              LOWER(c.lastName) LIKE LOWER(CONCAT(:searchInput, '%'))
+              LOWER(c.lastName) LIKE LOWER(CONCAT('%', :searchInput, '%'))
               )
         """)
 //    ORDER BY c.lastName, c.firstName ??
