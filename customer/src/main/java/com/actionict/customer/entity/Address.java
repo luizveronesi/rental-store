@@ -25,8 +25,7 @@ public class Address {
     private String district;
 
     @JoinColumn(name = "city_id")
-    @ManyToOne(fetch = FetchType.LAZY)
-    //@Column(name = "city_id")
+    @ManyToOne(fetch = FetchType.EAGER)
     private City city;
 
     @Column(name = "postal_code")

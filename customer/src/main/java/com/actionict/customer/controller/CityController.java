@@ -22,17 +22,15 @@ public class CityController {
     @GetMapping("/{id}")
     public City findCityById(@PathVariable("id") Integer id) throws Exception { return cityService.findById(id); }
 
-    @PostMapping("/insert")
+    @PostMapping()
     public ResponseEntity<Integer> insertCity(@RequestBody City city) {
         Integer id = cityService.save(city).getId();
         return new ResponseEntity<Integer>(id, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
-    public void updateCity(@RequestBody City newCity, @PathVariable Integer id) {
-        cityService.update(newCity, id);
-    }
+    @PutMapping("/{id}")
+    public void updateCity(@RequestBody City newCity, @PathVariable Integer id) { cityService.update(newCity, id); }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteCity(@PathVariable Integer id) { cityService.delete(id); }
 }
