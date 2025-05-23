@@ -17,12 +17,8 @@ public class CustomerController {
 
     private final CustomerService customerService;
 
-    /*@RequestMapping("/search")
-    public List<Customer> search(@RequestParam(value = "firstName", required = false) String firstName, @RequestParam(value = "lastName", required = false) String lastName) {
-        return customerService.findAll(firstName, lastName);
-    }*/
-    @GetMapping("/name/{name}")
-    public Page<Customer> search(@PathVariable("name") String name, Pageable pageable) { return customerService.findAll(name, pageable); }
+    @GetMapping("/name")
+    public Page<Customer> search(@RequestParam(name = "name", required = false) String name, Pageable pageable) { return customerService.findAll(name, pageable); }
 
     @GetMapping
     public Page<Customer> getAllCustomers() { return customerService.findAll("", Pageable.unpaged()); }
