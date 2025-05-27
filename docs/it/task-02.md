@@ -21,20 +21,20 @@ Dovrai:
 
 ## 📌 Dettaglio delle Attività
 
-### 1️⃣ Creare Spring Cloud Config Server
+### 1️⃣ Creare Eureka Service Discovery
+
+- Crea un nuovo progetto Spring Boot con la dipendenza **Eureka Server**.
+- Configuralo su una porta dedicata (es. `8761`).
+- Registra tutti gli altri servizi (Gateway e Customer Module) come client Eureka.
+
+---
+
+### 2️⃣ Creare Spring Cloud Config Server
 
 - Crea un nuovo progetto Spring Boot con la dipendenza **Spring Cloud Config Server**.
 - Configura il server per leggere le configurazioni da una directory `config-repo` locale o da un repository Git.
 - Esponi il Config Server su una porta dedicata (es. `8888`).
 - Definisci i file `application.yml` per server e client.
-
----
-
-### 2️⃣ Creare Eureka Service Discovery
-
-- Crea un nuovo progetto Spring Boot con la dipendenza **Eureka Server**.
-- Configuralo su una porta dedicata (es. `8761`).
-- Registra tutti gli altri servizi (Gateway e Customer Module) come client Eureka.
 
 ---
 

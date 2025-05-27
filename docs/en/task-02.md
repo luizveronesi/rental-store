@@ -21,20 +21,20 @@ You will:
 
 ## 📌 Task Breakdown
 
-### 1️⃣ Set Up Spring Cloud Config Server
+### 1️⃣ Set Up Eureka Service Discovery
+
+- Create a new Spring Boot project with the **Eureka Server** dependency.
+- Configure it to run on a dedicated port (e.g., `8761`).
+- Register all other services (Gateway and Customer Module) as Eureka clients.
+
+---
+
+### 2️⃣ Set Up Spring Cloud Config Server
 
 - Create a new Spring Boot project with the **Spring Cloud Config Server** dependency.
 - Configure the server to serve properties from a local `config-repo` directory or a Git repository.
 - Expose the Config Server on a dedicated port (e.g., `8888`).
 - Add appropriate `bootstrap.yml` / `application.yml` files for the server and clients.
-
----
-
-### 2️⃣ Set Up Eureka Service Discovery
-
-- Create a new Spring Boot project with the **Eureka Server** dependency.
-- Configure it to run on a dedicated port (e.g., `8761`).
-- Register all other services (Gateway and Customer Module) as Eureka clients.
 
 ---
 
