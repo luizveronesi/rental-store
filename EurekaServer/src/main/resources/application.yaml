@@ -1,0 +1,20 @@
+#server:
+#  port: 8761
+#
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#
+spring:
+  application:
+    name: EUREKA-SERVER
+  config:
+    import: optional:configserver:http://${CONFIG_HOST:localhost}:8888
+#
+#logging:
+#  level:
+#    org.springframework.cloud.bootstrap: DEBUG
+#    org.springframework.boot.context.config: DEBUG

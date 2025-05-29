@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/countries")
+@RequestMapping("/customers/countries")
 public class CountryController extends EntityController<Country> {
 
     public CountryController(CountryService service) {

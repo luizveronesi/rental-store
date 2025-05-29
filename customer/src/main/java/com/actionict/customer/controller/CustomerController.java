@@ -13,7 +13,7 @@ import static com.actionict.customer.model.Customer.FIRST_NAME;
 import static com.actionict.customer.model.Customer.LAST_NAME;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/customers/customers")
 public class CustomerController extends EntityController<Customer> {
 
     public CustomerController(CustomerService service) {

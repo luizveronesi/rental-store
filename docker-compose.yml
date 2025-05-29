@@ -1,0 +1,75 @@
+services:
+
+  config-server:
+    image: rental-configserver
+    ports:
+      - "8888:8888"
+    networks:
+      - rental-net
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+
+  eureka-server:
+    image: rental-eurekaserver
+    ports:
+      - "8761:8761"
+    networks:
+      - rental-net
+    depends_on:
+      - config-server
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+      - CONFIG_HOST=config-server
+
+  gateway:
+    image: rental-gateway
+    ports:
+      - "9090:9090"
+    networks:
+      - rental-net
+    depends_on:
+      - config-server
+      - eureka-server
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+      - CONFIG_HOST=config-server
+      - EUREKA_HOST=eureka-server
+
+  rental-db:
+    image: postgres:15-alpine
+    container_name: rental-db
+    environment:
+      POSTGRES_DB: rental_store
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - rental-net
+
+  customer:
+    image: rental-customer
+    ports:
+      - "8081:8081"
+    networks:
+      - rental-net
+    depends_on:
+      - config-server
+      - eureka-server
+      - rental-db
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+      - CONFIG_HOST=config-server
+      - EUREKA_HOST=eureka-server
+      - DB_HOST=rental-db
+
+# Parametri per database
+volumes:
+  pgdata:
+
+# Parametri rete Docker
+networks:
+  rental-net:
+

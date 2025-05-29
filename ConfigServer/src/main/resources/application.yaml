@@ -1,0 +1,16 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: CONFIG-SERVER
+
+  cloud:
+    config:
+      server:
+        git:
+#          uri: file:///${user.home}/workspace/config-repo
+          uri: https://github.com/Terminenzio/rental-store
+          default-label: develop
+          search-paths: config
+          clone-on-start: true

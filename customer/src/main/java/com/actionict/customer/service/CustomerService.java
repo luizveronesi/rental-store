@@ -1,8 +1,6 @@
 package com.actionict.customer.service;
 
-import com.actionict.customer.model.City;
 import com.actionict.customer.model.Customer;
-import com.actionict.customer.repository.CityRepository;
 import com.actionict.customer.repository.CustomerRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

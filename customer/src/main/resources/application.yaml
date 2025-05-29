@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: CUSTOMER-SERVICE
+  config:
+    import: optional:configserver:http://${CONFIG_HOST:localhost}:8888
+# Retry Config-Server?
+  cloud:
+    config:
+      fail-fast: true
+      retry:
+        initial-interval: 1000
+        max-attempts: 10
+        multiplier: 1.5
