@@ -69,3 +69,6 @@ generated/
 *.local
 *.bak
 *.swp
+*.gitignore
+*.gitattributes
+.mvn/
