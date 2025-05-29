@@ -9,7 +9,7 @@ sviluppato utilizzando **IntelliJ IDEA**.
 - [Installation Guide](docs/it/installation.md)
 - [Github Details](docs/it/github.md)
 - [Attività 1: Implementazione dei servizi per il modulo Cliente](docs/it/task-01.md)
-- [Attività 2: Configurazione dei Microservizi Spring Cloud e Dockerizzazione](docs/it/task-02.md)
+- [Attività 3: Configurazione dei Microservizi Spring Cloud e Dockerizzazione](docs/it/task-03)
 
 ---
 

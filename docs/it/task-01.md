@@ -13,7 +13,7 @@ rental-store.mwb.
 
 ## Passaggi:
 
-1. **Crea un nuovo database** in PostgreSQL chiamato `rental_store` e modifica la configurazione nel file
+1. **Crea un nuovo database** in PostgreSQL chiamato `customer` e modifica la configurazione nel file
    `application.yml` all'interno della cartella `customer/resources`.
 2. Mappa le entità JPA per:
     - `country` (già mappato)

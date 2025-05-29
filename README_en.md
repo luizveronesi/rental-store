@@ -8,7 +8,7 @@ The project uses **Maven** for dependency management and is intended to be devel
 - [Installation Guide](docs/it/installation.md)
 - [Github Details](docs/it/github.md)
 - [Activity 1: Service implementation for Customer module](docs/it/task-01.md)
-- [Activity 2: Spring Cloud Microservices Setup and Dockerization](docs/it/task-02.md)
+- [Activity 2: Spring Cloud Microservices Setup and Dockerization](docs/it/task-03)
 
 ---
 
