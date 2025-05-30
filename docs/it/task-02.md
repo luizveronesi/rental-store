@@ -15,7 +15,7 @@ rental-store.mwb.
 
 1. **Crea un nuovo database** in PostgreSQL chiamato `inventory` e crea la configurazione nel file
    `application.yml` all'interno della cartella `inventory/resources`.
-2. **Crea un nuovo modulo** nel progetto `Rental Store` e aggiorna il pom padre
+2. **Crea un nuovo modulo** nel progetto `Rental Store`, aggiorna il pom padre e la configurazione del `gateway`.
 3. Mappa le entità JPA per:
     - `category`
     - `film_category`

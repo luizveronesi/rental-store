@@ -13,7 +13,7 @@ There’s a PDF file in the database folder containing the complete database mod
 
 1. **Create a new database** in PostgreSQL named `inventory` and create the configuration in the `application.yml` file
    inside the `inventory/resources` folder.
-2. **Create a new module** in the `Rental Store` project and update the parent `pom`.
+2. **Create a new module** in the `Rental Store` project, update the parent `pom` and configure the `gateway`.
 3. Map the JPA entities for:
     - `category`
     - `film_category`
