@@ -1,9 +1,10 @@
 server:
   port: 8080
-
+  servlet:
+    context-path: /api/customer
 spring:
   application:
-    name: RENTAL-STORE
+    name: customer
   config:
     import:
       - 'configserver:http://localhost:8888'

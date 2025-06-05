@@ -7,26 +7,10 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: customer-route
+        - id: customer
           uri: lb://customer
           predicates:
-            - Path=/customers/**
-        - id: address-route
-          uri: lb:RENTAL-STORE
-          predicates:
-            - Path=/addresses/**
-        - id: city-route
-          uri: lb:RENTAL-STORE
-          predicates:
-            - Path=/cities/**
-        - id: country-route
-          uri: lb:RENTAL-STORE
-          predicates:
-            - Path=/countries/**
-#            - Path=/addresses/**
-#            - Path=/cities/**
-#            - Path=/countries/**
-# Secondo il corso dovrei fare una sezione (- id...) per ogni servizio, ma sono tutti sotto lo stesso yml quindi hanno tutti lo stesso id
+            - Path=/api/customer/**
 
 server:
   port: 9090
