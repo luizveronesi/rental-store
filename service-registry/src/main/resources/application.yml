@@ -1,14 +1,13 @@
 server:
   port: 8761
 
-#spring:
-  #application:
-    #name: service-registry
+spring:
+  application:
+    name: service-registry
 
 eureka:
   instance:
     hostname: localhost
-    #Dopo Kubernetes è "${HOSTNAME:localhost}.eureka"
   client:
     register-with-eureka: false
     fetch-registry: false
