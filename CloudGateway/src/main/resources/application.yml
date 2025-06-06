@@ -6,11 +6,13 @@ spring:
       - 'configserver:http://localhost:8888'
   cloud:
     gateway:
-      routes:
-        - id: customer
-          uri: lb://customer
-          predicates:
-            - Path=/api/customer/**
+      server:
+        webflux:
+          routes:
+            - id: customer
+              uri: lb://customer
+              predicates:
+                - Path=/api/customer/**
 
 server:
   port: 9090
