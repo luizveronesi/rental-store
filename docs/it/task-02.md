@@ -22,7 +22,6 @@ rental-store.mwb.
     - `language`
     - `actor`
     - `film_actor`
-    - `film_text`
     - `inventory`
     - `film`
 4. Assicurati che:
@@ -42,6 +41,5 @@ rental-store.mwb.
     - Crea una nuova entità relativa alle immagini di un film.
     - L'entità deve avere un attributo responsabile dell'ordine di visualizzazione.
     - Crea l'endpoint per il caricamento del file.
-    - Crea gli endpoint per recuperare tutte le immagini di un film ed eliminarne una.
-    - Crea un endpoint per modificare il loro ordine. L'endpoint deve cambiare l'ordine di un'immagine e aggiornare quello delle altre.
+    - Crea gli endpoint per recuperare tutte le immagini, eliminarle e modificare il loro ordine
 8. **Esegui il commit delle modifiche** e spingile nel tuo repository biforcato.
