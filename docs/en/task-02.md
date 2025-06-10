@@ -40,5 +40,6 @@ There’s a PDF file in the database folder containing the complete database mod
     - Create a new entity related to movie images.
     - The entity must have an attribute responsible for the display order.
     - Create the endpoint for file upload.
-    - Create endpoints to retrieve all images, delete them, and change their order.
+    - Create endpoints to retrieve all images from a movie and delete one.
+    - Create an endpoint to modify their order. The endpoint must change the order of one image and update the order of the others.
 8. **Commit the changes** and push them to your forked repository.
