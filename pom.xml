@@ -23,7 +23,8 @@
         <module>ConfigServer</module>
         <module>CloudGateway</module>
         <module>customer</module>
-    </modules>
+        <module>inventory</module>
+   </modules>
 
     <dependencies>
         <!--        <dependency>-->

@@ -1,0 +1,28 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api/inventory
+spring:
+  application:
+    name: inventory
+  config:
+    import:
+      - 'configserver:http://localhost:8888'
+  datasource:
+    url: jdbc:postgresql://localhost:5432/inventory?currentSchema=inventory
+    username: admin
+    password: 'admin'
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate #update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        #dialect: org.hibernate.dialect.PostgreSQLDialect
+
+eureka:
+  instance:
+    prefer-ip-address: true
