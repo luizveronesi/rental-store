@@ -13,6 +13,10 @@ spring:
               uri: lb://customer
               predicates:
                 - Path=/api/customer/**
+            - id: inventory
+              uri: lb://inventory
+              predicates:
+                - Path=/api/inventory/**
 
 server:
   port: 9090
