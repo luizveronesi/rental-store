@@ -2,12 +2,16 @@ package com.actionict.inventory.controller;
 
 import com.actionict.inventory.service.PictureService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE;
 
 @RestController
 @RequestMapping("/pictures")
@@ -18,4 +22,10 @@ public class PictureController {
 
     @GetMapping("/files")
     public List<String> listFiles() { return pictureService.listFiles(); }
+
+    @PostMapping(path = "/upload", consumes = {MULTIPART_FORM_DATA_VALUE})
+    public ResponseEntity<Map<String, String>> uploadFile(@RequestParam("file") MultipartFile file) {
+        Map<String, String> map = pictureService.uploadFile(file);;
+        return ResponseEntity.ok(map);
+    }
 }
