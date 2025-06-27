@@ -9,11 +9,15 @@ import lombok.Data;
 public class Picture {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "picture_seq")//IDENTITY)
+    @SequenceGenerator(name = "picture_seq", sequenceName = "picture_picture_id_seq", allocationSize = 1)
     @Column(name = "picture_id", nullable = false)
-    private Integer pictureId;
+    private Integer id;
 
     @JoinColumn(name = "film_id")
     @ManyToOne(fetch = FetchType.EAGER)
     private Film film;
+
+    @Column(name = "order_number")
+    private Integer orderNumber;
 }

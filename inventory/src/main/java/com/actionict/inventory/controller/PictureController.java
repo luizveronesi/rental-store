@@ -24,8 +24,8 @@ public class PictureController {
     public List<String> listFiles() { return pictureService.listFiles(); }
 
     @PostMapping(path = "/upload", consumes = {MULTIPART_FORM_DATA_VALUE})
-    public ResponseEntity<Map<String, String>> uploadFile(@RequestParam("file") MultipartFile file) {
-        Map<String, String> map = pictureService.uploadFile(file);;
+    public ResponseEntity<Map<String, String>> uploadFile(@RequestParam("filmId") Integer filmId, @RequestParam("order") Integer order, @RequestParam("file") MultipartFile file) {
+        Map<String, String> map = pictureService.uploadFile(filmId, order, file);
         return ResponseEntity.ok(map);
     }
 }

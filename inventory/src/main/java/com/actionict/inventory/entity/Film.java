@@ -25,7 +25,7 @@ public class Film {
     private String description;
 
     @Column(name = "release_year")
-    private int releaseYear;
+    private Integer releaseYear;
 
     @JoinColumn(name = "language_id")
     @ManyToOne(fetch = FetchType.EAGER)
@@ -35,13 +35,13 @@ public class Film {
     private Integer originalLanguageId;
 
     @Column(name = "rental_duration")
-    private int rentalDuration;
+    private Integer rentalDuration;
 
     @Column(name = "rental_rate", precision = 4, scale = 2)
     private BigDecimal rentalRate;
 
     @Column(name = "length")
-    private int length;
+    private Integer length;
 
     @Column(name = "replacement_cost", precision = 5, scale = 2)
     private BigDecimal replacementCost;

@@ -1,9 +1,11 @@
 package com.actionict.inventory.service;
 
+import com.actionict.inventory.entity.Film;
+import com.actionict.inventory.entity.Picture;
+import com.actionict.inventory.repository.FilmRepository;
+import com.actionict.inventory.repository.PictureRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FileUtils;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,9 +17,10 @@ import java.util.*;
 @RequiredArgsConstructor
 public class PictureService {
 
-    private final String dirPath = "inventory/src/main/resources/pics";
-    private final String absDirPath = new FileSystemResource(dirPath).getFile().getAbsolutePath();
-    private final File dir = new File(dirPath);
+    private final PictureRepository pictureRepository;
+    private final FilmRepository filmRepository;
+    private final String absDirPath = "C:/2505 Corso/resources/pics";//new FileSystemResource(dirPath).getFile().getAbsolutePath();
+    private final File dir = new File(absDirPath);
 
     public List<String> listFiles() {
         List<String> fileNames = new ArrayList<>();
@@ -29,21 +32,25 @@ public class PictureService {
         return fileNames;
     }
 
-    public Map<String, String> uploadFile(MultipartFile mpFile) {
+    public Map<String, String> uploadFile(Integer filmId, Integer orderNumber, MultipartFile mpFile) {
+        Film film = filmRepository.findById(filmId).orElseThrow();
+        Picture picture = new Picture();
+        picture.setFilm(film);
+        picture.setOrderNumber(orderNumber);
+        pictureRepository.save(picture);
+        int picId = picture.getId();
+        String fileName = "pic"+picId+".jpg";
         //https://howtodoinjava.com/spring-boot/spring-boot-file-upload-rest-api/
         Map<String, String> map = new HashMap<>();
         map.put("fileName", mpFile.getOriginalFilename());
         map.put("fileSize", String.valueOf(mpFile.getSize()));
         map.put("fileContentType", mpFile.getContentType());
-        File file = new File(dirPath+"/file.jpg");
+        File file = new File(absDirPath+"/"+fileName);
         try {
             file.createNewFile();
-            file.setWritable(true);
-            System.out.println("File in "+file.getAbsolutePath());
             mpFile.transferTo(file);
         } catch (IOException e) { throw new RuntimeException(e); }
-        //FileUtils.moveFileToDirectory(mpFile, new File(dirPath), false);
-        map.put("message", "File successfully uploaded");
+        map.put("message", "File "+fileName+" successfully uploaded");
         return map;
     }
 }
