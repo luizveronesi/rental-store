@@ -6,6 +6,7 @@ import com.actionict.inventory.repository.FilmRepository;
 import com.actionict.inventory.repository.PictureRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FileUtils;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,6 +33,14 @@ public class PictureService {
         return fileNames;
     }
 
+    public List<Picture> findByFilm(Integer filmId) {
+        List<Picture> pictures = new ArrayList<>();
+        Film film = filmRepository.findById(filmId).orElseThrow();
+        Sort sort = Sort.by(Sort.Direction.ASC, "orderNumber");
+        pictures = pictureRepository.findByFilm(film, sort);
+        return pictures;
+    }
+
     public Map<String, String> uploadFile(Integer filmId, Integer orderNumber, MultipartFile mpFile) {
         Film film = filmRepository.findById(filmId).orElseThrow();
         Picture picture = new Picture();
@@ -53,4 +62,5 @@ public class PictureService {
         map.put("message", "File "+fileName+" successfully uploaded");
         return map;
     }
+
 }

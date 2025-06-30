@@ -9,7 +9,7 @@ import lombok.Data;
 public class Picture {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "picture_seq")//IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "picture_seq")
     @SequenceGenerator(name = "picture_seq", sequenceName = "picture_picture_id_seq", allocationSize = 1)
     @Column(name = "picture_id", nullable = false)
     private Integer id;
