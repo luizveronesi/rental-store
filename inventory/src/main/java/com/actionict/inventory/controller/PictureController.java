@@ -22,6 +22,9 @@ public class PictureController {
 
     private final PictureService pictureService;
 
+    @GetMapping
+    public List<Picture> findAll() { return pictureService.findAll(); }
+
     @GetMapping("/files")
     public List<String> listFiles() { return pictureService.listFiles(); }
 
@@ -35,4 +38,10 @@ public class PictureController {
         Map<String, String> map = pictureService.uploadFile(filmId, orderNumber, file);
         return ResponseEntity.ok(map);
     }
+
+    @PutMapping("/updateOrder")
+    public void updateOrder(@RequestBody Map<Integer, Integer> pictures) { pictureService.updateOrder(pictures); }
+
+    @DeleteMapping("/{id}")
+    public void deletePicture(@PathVariable Integer id) { pictureService.delete(id); }
 }
