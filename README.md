@@ -11,6 +11,7 @@ sviluppato utilizzando **IntelliJ IDEA**.
 - [Attività 1: Implementazione del servizio per il modulo Customer](docs/it/task-01.md)
 - [Attività 2: Implementazione dei servizi per il modulo Inventory](docs/it/task-02.md)
 - [Attività 3: Spring Cloud Microservices: configurazione e dockerizzazione](docs/it/task-03.md)
+- [Attività 4: Inserimento Batch dei Clienti](docs/it/task-04.md)
 
 ---
 
